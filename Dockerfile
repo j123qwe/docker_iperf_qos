@@ -1,0 +1,17 @@
+FROM alpine:latest
+ENV HOST 127.0.0.1
+ENV PORT 5201
+ENV PROTO UDP
+ENV SPEED 10
+ENV TIME 10
+ENV INTERVAL 10
+ENV DIRECTION UP
+ENV OUTPUT STANDARD
+ENV MODE CLIENT
+ENV TIMEOUT 5
+ENV DSCP BE
+
+RUN apk add libcap iperf3 iptables
+
+COPY execute.sh /tmp
+CMD ["/bin/sh","/tmp/execute.sh"]
